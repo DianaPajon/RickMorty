@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RickmortyModule } from './rickmorty/rickmorty.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { RickmortyModule } from './rickmorty/rickmorty.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RickmortyModule
+    RickmortyModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

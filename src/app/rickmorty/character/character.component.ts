@@ -13,7 +13,8 @@ export class CharacterComponent implements OnInit{
   
   character:Character|undefined;
   episodes: Episode[] | undefined;
-
+  episodePromises : Promise<Episode>[] = [];
+  loading:boolean = true;
   constructor(private route:ActivatedRoute, private restApi:RickmortyRestService){
 
   }
@@ -24,13 +25,17 @@ export class CharacterComponent implements OnInit{
       this.character =character;
       console.log(this.character);
       this.fetchManyEpisodes(this.character.episode).then(
-        e => this.episodes = e
+        e => {
+          this.episodes = e
+          this.loading = false;
+        }
       )
     });
   }
 
   private fetchManyEpisodes(episodeList:string[]):Promise<Episode[]>{
     let promiseArray = episodeList.map(episode => this.restApi.fetchEpisode(episode));
+    this.episodePromises = promiseArray;
     return Promise.all(promiseArray)
   }
 }

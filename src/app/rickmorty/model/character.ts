@@ -7,7 +7,7 @@ export interface Character {
     type:string;
     gender:string;
     origin:Location|undefined;
-    location:Location[];
+    location:Location|undefined;
     image:string;
     episode:string[];
     url:string;
