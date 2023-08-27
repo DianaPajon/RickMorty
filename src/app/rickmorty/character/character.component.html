@@ -1,4 +1,24 @@
-<div *ngIf="character">
-    <img src="{{character.image}}"/>
-    <p>{{character.name}}</p>
+<div *ngIf="character" class="container">
+    <div class="row">
+        <div class="col">
+            <img src="{{character.image}}"/>
+        </div>
+        <div class="col">
+            <ul>
+                <li><span class="campo">Name: </span> {{character.name}}</li>
+                <li><span class="campo">Gender: </span> {{character.gender}}</li>
+                <li *ngIf="character.origin"><span class="campo">Origin: </span> {{character.origin?.name}}</li>
+                <li ><span class="campo">Species: </span> {{character.species}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3>Episodes:</h3>
+        <ol>
+            <li *ngFor="let episode of episodes">{{episode.episode}} - {{episode.name}} , {{episode.air_date}}</li>
+        </ol>
+    </div>
+
+    
 </div>

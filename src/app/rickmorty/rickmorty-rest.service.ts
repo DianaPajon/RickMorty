@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Character } from './model/character';
 import { firstValueFrom } from 'rxjs';
-import { map } from 'rxjs';
 import { ApiResponse } from './model/api-response';
+import { Episode } from './model/episode';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class RickmortyRestService {
 
   readonly apiUrl:string = environment.apiUrl;
   readonly characterEndpoint:string = this.apiUrl + "/character"
+  readonly episodeEndpoint:string = this.apiUrl + "/episode"
 
   constructor(private httpClient:HttpClient) {
 
@@ -32,5 +33,9 @@ export class RickmortyRestService {
 
   public async findCharacter(id:number):Promise<Character>{
     return firstValueFrom(this.httpClient.get<Character>(this.characterEndpoint + "/" + id));
+  }
+
+  public async fetchEpisode(id:string):Promise<Episode>{
+    return firstValueFrom(this.httpClient.get<Episode>(id));
   }
 }
