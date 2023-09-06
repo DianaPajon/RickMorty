@@ -2,14 +2,42 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    padding: 0;
 }
 
+.buttonBar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0;
+}
 .is-focusable {
     cursor: pointer;
 }
 
+.rightInput {
+    transform: scale(0.9);
+}
 .mainHeader {
     font-family: sans-serif;
     font-weight: bold;
-    margin-top: 0.6em
+    font-size: 2.2em;
+    margin-top: 0.3em;
+}
+
+.mat-mdc-card-title-group{
+    align-items: center;
+}
+
+.button{
+    font-size: large;
+}
+
+.character-list{
+    margin-top: 0;
+    padding-bottom: 1em;
+}
+
+.imagen{
+    border-radius: 40% !important;
 }

@@ -2,35 +2,42 @@
     <mat-card>
         <mat-card-header>
           <mat-card-title-group>
-            <mat-card-title>{{character.name}}</mat-card-title>
-            <img mat-card-lg-image src="{{character.image}}" >
+            <mat-card-title class="title">{{character.name}}</mat-card-title>
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
-            <ul>
-                <li><p class="texto"><span class="campo">Name: </span> {{character.name}}</p></li>
-                <li><p class="texto"><span class="campo">Gender: </span> {{character.gender}}</p></li>
-                <li *ngIf="character.origin"><p class="texto"><span class="campo">Origin: </span> {{character.origin.name}}</p></li>
-                <li *ngIf="character.location"><p class="texto"><span class="campo">Location: </span> {{character.location.name}}</p></li>
-                <li ><p class="texto"><span class="campo">Species: </span> {{character.species}}</p></li>
-            </ul>
+          <div class="row">
+            <div class="col">
+              <ul class="lista">
+                  <li><p class="texto"><span class="campo">Name: </span> {{character.name}}</p></li>
+                  <li><p class="texto"><span class="campo">Gender: </span> {{character.gender}}</p></li>
+                  <li *ngIf="character.origin"><p class="texto"><span class="campo">Origin: </span> {{character.origin.name}}</p></li>
+                  <li *ngIf="character.location"><p class="texto"><span class="campo">Location: </span> {{character.location.name}}</p></li>
+                  <li ><p class="texto"><span class="campo">Species: </span> {{character.species}}</p></li>
+              </ul>
+            </div>
+            <div class="col flexEnd">
+              <mat-progress-spinner
+                *ngIf="loading"
+                class="spinnercontainer"
+                [color]="'primary'"
+                [mode]="'indeterminate'">
+              </mat-progress-spinner>
+              <img *ngIf="!loading" src="{{character.image}}"  class="imagen"/>
+            </div>
+          </div>
         </mat-card-content>
       </mat-card>
       <mat-card>
         <mat-card-header>
             <mat-card-title-group>
-              <mat-card-title>Episodes</mat-card-title>
+              <mat-card-title class="title episodetitle">Episodes</mat-card-title>
             </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
-            <mat-progress-spinner
-                *ngIf="loading"
-                class="example-margin"
-                [color]="'primary'"
-                [mode]="'indeterminate'">
-            </mat-progress-spinner>
+            
             <ol>
-                <li *ngFor="let episode of episodes">{{episode.episode}} - {{episode.name}} , {{episode.air_date}}</li>
+                <li class="listaepisodios" *ngFor="let episode of episodes">{{episode.episode}} - {{episode.name}} , {{episode.air_date}}</li>
             </ol>
         </mat-card-content>
     </mat-card>

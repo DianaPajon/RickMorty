@@ -1,33 +1,35 @@
 <div class="container">
-    <div class="row my-2">
+    <div class="row mt-2">
         <div class="col">
-            <h1 class="mainHeader">Rick and morty characters</h1>
+            <h1 class="mainHeader  mx-2">RICK AND MORTY CHARACTERS</h1>
         </div>
         <div class="col searchBar">
-            <mat-form-field class="example-form-field">
-                <mat-label>search</mat-label>
-                <input matInput class="rightInput" type="text" [(ngModel)]="searchBar" (keyup)="filterResults()">
-            </mat-form-field>
+            <div class="rightInput">
+                <mat-form-field class="example-form-field">
+                    <mat-label>search</mat-label>
+                    <input matInput type="text" [(ngModel)]="searchBar" (keyup)="filterResults()">
+                </mat-form-field>
+            </div>
         </div>
     </div>
     <div class="characters">
         <div *ngFor="let character of characters" class="is-focusable" [routerLink]="['/character', character.id]">
-            <mat-card >
+            <mat-card class="character-list">
                 <mat-card-header>
                   <mat-card-title-group>
-                    <mat-card-title>{{character.name}}</mat-card-title>
-                    <img mat-card-sm-image src="{{character.image}}" >
+                    <mat-card-title class="align-middle">{{character.name}}</mat-card-title>
+                    <img mat-card-sm-image src="{{character.image}}" class="imagen" >
                   </mat-card-title-group>
                 </mat-card-header>
               </mat-card>
         </div>
     </div>
-    <div class="mt-3 row">
+    <div class="mt-1 row">
         <div  class="col">
-            <button  mat-flat-button *ngIf="prevPage" (click)="loadPrev()">Previous</button>
+            <button  mat-button color="primary" class="button" *ngIf="prevPage" (click)="loadPrev()">Previous</button>
         </div>
-        <div  class="col searchBar" >
-            <button class="float-right" mat-flat-button *ngIf="nextPage" (click)="loadNext()">Next</button>
+        <div  class="col buttonBar" >
+            <button class="float-right button" mat-button color="primary" *ngIf="nextPage" (click)="loadNext()">Next</button>
         </div>
         
     </div>
